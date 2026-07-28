@@ -80,3 +80,11 @@ Product Manager · Software Architect · UI/UX Designer · Frontend Developer ·
 ## Changelog
 
 - **Fase 0**: definição da arquitetura de alto nível, decisão pelo Adapter Pattern para integração com LLMs, e pela orquestração híbrida (sequência fixa + autonomia por etapa).
+
+## Ferramentas de apoio
+
+O desenvolvimento é assistido por IA via Antigravity, com uso segmentado por modelo:
+
+- **Claude Opus 4.6 (Thinking)** — decisões de arquitetura e revisão de lógica complexa
+- **Gemini 3.1 Pro (High)** — segunda opinião em decisões técnicas
+- **Gemini 3.6 Flash (Medium/Low)** — geração de código combinado e tarefas repetitivas
