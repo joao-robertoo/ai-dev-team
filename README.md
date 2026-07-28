@@ -1,82 +1,51 @@
-# AI Dev Team
+# AI Dev Team 🚀
 
-Plataforma SaaS onde múltiplos agentes de Inteligência Artificial atuam como um time de desenvolvimento completo. O usuário cria um projeto, descreve sua ideia e escolhe um ou mais modelos de IA; a plataforma conduz o projeto por um fluxo de agentes especializados (Product Manager, Arquiteto, Frontend, Backend, QA, DevOps, Segurança, Banco de Dados, Tech Lead e Documentação), entregando ao final planejamento, arquitetura, código, testes e relatório completo.
+Uma plataforma SaaS onde agentes de Inteligência Artificial colaboram como um time de desenvolvimento de software de alta performance (Planejamento, Código, Revisão).
 
-Este projeto está sendo construído em fases públicas, como um estudo de caso de arquitetura de software e engenharia de IA.
+## 🛠️ Stack Tecnológica (Backend)
+- **Runtime:** Node.js
+- **Linguagem:** TypeScript
+- **Ferramenta de Dev:** `tsx` (TypeScript Execution)
 
-## Status atual
+## 📁 Estrutura do Projeto
 
-**Fase 0 — Fundamentos e Arquitetura Geral** (em andamento)
-
-Nesta fase ainda não há código. O objetivo é definir a espinha dorsal do sistema antes de qualquer implementação.
-
-## Visão de arquitetura (alto nível)
-
-O sistema é dividido em três fronteiras principais:
-
-```
-[ Usuário ]
-     │
-     ▼
-[ Interface (Frontend) ]
-     │
-     ▼
-[ Orquestrador de Agentes ]
-     │
-     ▼
-[ Camada de Integração com LLMs ]
-     │
-     ▼
-[ Provedor de IA escolhido ]
+```text
+ai-dev-team/
+├── src/
+│   ├── api/             # Controllers, middlewares e rotas (HTTP/Sockets)
+│   ├── agents/          # Definições, prompts e ferramentas (tools) dos agentes de IA
+│   ├── orchestration/   # Motor de coordenação de fluxos e gerenciamento de estado
+│   ├── domain/          # Entidades e interfaces de negócio do SaaS
+│   ├── services/        # Provedores de LLM, manipulação de arquivos e projetos
+│   ├── config/          # Variáveis de ambiente e configurações globais
+│   └── utils/           # Logger, tratamento de exceções e helpers gerais
+└── tests/               # Testes unitários e de integração
 ```
 
-### 1. Orquestrador de Agentes
+## 🚀 Como Executar
 
-Segue uma sequência fixa de etapas (Product Manager → Architect → Frontend/Backend → QA → DevOps → Documentação), mas cada agente tem autonomia total para decidir *como* executar sua própria etapa. A sequência geral é previsível (evita loops e facilita depuração); a execução dentro de cada etapa é flexível.
-
-### 2. Camada de Integração com LLMs (Adapter Pattern)
-
-Nenhum agente conversa diretamente com a API de um provedor específico (Gemini, Claude, Groq, OpenAI, Kimi). Todos passam por uma interface única e genérica. Um adaptador por provedor é responsável por traduzir essa chamada genérica para o formato específico de cada IA.
-
-```
-[ Agente ]
-     │
-     ▼
-[ Interface: ProvedorDeIA ]
-     │
- ┌───┼────┬──────┐
- ▼   ▼    ▼      ▼
-Gemini Claude Groq OpenAI/Kimi...
+### 1. Instalar Dependências
+```bash
+npm install
 ```
 
-Vantagem principal: trocar ou adicionar um provedor de IA exige mexer em um único lugar (o adaptador correspondente), não em cada agente individualmente. Isso segue o princípio SOLID de Inversão de Dependência.
+### 2. Modo Desenvolvimento
+```bash
+npm run dev
+```
 
-## Stack planejada
+### 3. Compilar para Produção
+```bash
+npm run build
+```
 
-- Next.js, React, TypeScript, Tailwind CSS
-- Supabase + Supabase Auth
-- n8n
-- GitHub + Vercel
-- Priorizando tecnologias gratuitas sempre que possível
+### 4. Executar Versão Compilada
+```bash
+npm start
+```
 
-## Agentes planejados
-
-Product Manager · Software Architect · UI/UX Designer · Frontend Developer · Backend Developer · QA Engineer · DevOps Engineer · Security Engineer · Database Engineer · Tech Lead · Documentation Writer
-
-## O que aprendemos na Fase 0
-
-- Separação de responsabilidades como princípio central de arquitetura
-- Diferença entre orquestração por regras fixas vs. autonomia de agentes, e por que um meio-termo reduz riscos (loops, imprevisibilidade)
-- Adapter Pattern como forma de desacoplar o sistema de provedores específicos de IA
-- Princípio SOLID de Inversão de Dependência aplicado na prática
-
-## O que falta
-
-- Estruturar o repositório e as pastas refletindo essas três fronteiras
-- Detalhar o modelo de dados (Fase futura)
-- Definir o contrato exato da interface `ProvedorDeIA`
-- Iniciar a Fase 1 (estrutura inicial do projeto)
-
-## Changelog
-
-- **Fase 0**: definição da arquitetura de alto nível, decisão pelo Adapter Pattern para integração com LLMs, e pela orquestração híbrida (sequência fixa + autonomia por etapa).
+## 📌 Fases de Desenvolvimento
+- [x] **Fase 1:** Estrutura inicial de pastas e configuração base (TypeScript, Node.js).
+- [ ] **Fase 2:** Lógica inicial de agente (1 agente conversando via API/provedor LLM).
+- [ ] **Fase 3:** Orquestração de múltiplos agentes (Planejador, Dev Backend, Revisor).
+- [ ] **Fase 4:** Integração completa do fluxo colaborativo e persistência.
